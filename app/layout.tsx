@@ -68,6 +68,16 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   category: "entertainment",
+  icons: {
+    icon: [
+      { url: "/icons/kaomoji-icon-16.jpg", sizes: "16x16", type: "image/jpeg" },
+      { url: "/icons/kaomoji-icon-32.jpg", sizes: "32x32", type: "image/jpeg" },
+      { url: "/icons/kaomoji-icon-64.jpg", sizes: "64x64", type: "image/jpeg" },
+    ],
+    apple: [
+      { url: "/icons/kaomoji-icon-192.jpg", sizes: "192x192", type: "image/jpeg" },
+    ],
+  },
 }
 
 export default function RootLayout({
