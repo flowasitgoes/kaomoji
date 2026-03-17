@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kaomoji.vercel.app"
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kaomoji.ifunlove.com"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -43,10 +43,11 @@ export const metadata: Metadata = {
       "免費收藏數百個顏文字 (^_^) (T_T)，依情緒分類、一鍵複製。讓文字溝通更有溫度。Japanese emoticons collection with quick copy.",
     images: [
       {
-        url: "/icons/kaomoji-og-1200x630.jpg",
+        url: `${siteUrl}/icons/kaomoji-og-1200x630.jpg`,
         width: 1200,
         height: 630,
         alt: "顏文字 Kaomoji | 日本鍵盤表情符號收藏，一鍵複製",
+        type: "image/jpeg",
       },
     ],
   },
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "顏文字 Kaomoji | 日本鍵盤表情符號收藏",
     description: "免費顏文字收藏，一鍵複製 (^_^) (T_T) (>_<)。Japanese emoticons with copy to clipboard.",
-    images: ["/icons/kaomoji-og-1200x630.jpg"],
+    images: [`${siteUrl}/icons/kaomoji-og-1200x630.jpg`],
   },
   robots: {
     index: true,
