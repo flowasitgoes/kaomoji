@@ -7,7 +7,6 @@ import { KaomojiCategories } from "@/components/kaomoji-categories"
 import { KaomojiHeader } from "@/components/kaomoji-header"
 import { KaomojiInfo } from "@/components/kaomoji-info"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { EmojiHelper } from "@/components/emoji-helper"
 import { kaomojiData } from "@/data/kaomoji-data"
 import { useLocalStorage } from "@/hooks/use-local-storage"
 
@@ -55,10 +54,7 @@ export function KaomojiApp() {
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="flex justify-between items-center mb-6">
         <KaomojiHeader onInfoClick={() => setShowInfo(!showInfo)} />
-        <div className="flex items-center gap-2">
-          <EmojiHelper />
-          <ThemeToggle />
-        </div>
+        <ThemeToggle />
       </div>
 
       {showInfo && <KaomojiInfo className="mb-6" />}

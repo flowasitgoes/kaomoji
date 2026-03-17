@@ -6,7 +6,6 @@ import { Card } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import { Check } from "lucide-react"
 import type { KaomojiType } from "@/types/kaomoji"
-import Image from "next/image"
 
 interface KaomojiGridProps {
   kaomoji: KaomojiType[]
@@ -30,70 +29,6 @@ export function KaomojiGrid({ kaomoji, onCopy }: KaomojiGridProps) {
     })
   }
 
-  // Function to get emoji image based on category and tags
-  const getEmojiImage = (category: string, tags: string[]) => {
-    // Map categories to emoji images
-    const categoryEmojiMap: Record<string, string> = {
-      happy: "/emojis/grinning-face.svg",
-      love: "/emojis/smiling-face-with-hearts.svg",
-      sad: "/emojis/crying-face.svg",
-      angry: "/emojis/pouting-face.svg",
-      surprised: "/emojis/face-with-open-mouth.svg",
-      shy: "/emojis/flushed-face.svg",
-      cake: "/emojis/shortcake.svg",
-      icecream: "/emojis/ice-cream.svg",
-      coffee: "/emojis/hot-beverage.svg",
-      cookie: "/emojis/cookie.svg",
-      animals: "/emojis/bear.svg",
-      music: "/emojis/musical-notes.svg",
-      flowers: "/emojis/cherry-blossom.svg",
-      hugs: "/emojis/hugging-face.svg",
-      chinese: "/emojis/scroll.svg",
-    }
-
-    // Check for specific tags to override category defaults
-    if (tags.includes("cake")) return "/emojis/shortcake.svg"
-    if (tags.includes("cookie")) return "/emojis/cookie.svg"
-    if (tags.includes("ice cream")) return "/emojis/ice-cream.svg"
-    if (tags.includes("coffee")) return "/emojis/hot-beverage.svg"
-    if (tags.includes("bear")) return "/emojis/bear.svg"
-    if (tags.includes("cat")) return "/emojis/cat-face.svg"
-    if (tags.includes("dog")) return "/emojis/dog-face.svg"
-    if (tags.includes("rabbit")) return "/emojis/rabbit-face.svg"
-    if (tags.includes("penguin")) return "/emojis/penguin.svg"
-    if (tags.includes("flower")) return "/emojis/cherry-blossom.svg"
-    if (tags.includes("music")) return "/emojis/musical-notes.svg"
-    if (tags.includes("singing")) return "/emojis/microphone.svg"
-    if (tags.includes("dancing")) return "/emojis/person-dancing.svg"
-    if (tags.includes("love")) return "/emojis/heart.svg"
-    if (tags.includes("kiss")) return "/emojis/kiss-mark.svg"
-    if (tags.includes("hug")) return "/emojis/hugging-face.svg"
-    if (tags.includes("happy")) return "/emojis/grinning-face.svg"
-    if (tags.includes("sad")) return "/emojis/crying-face.svg"
-    if (tags.includes("angry")) return "/emojis/pouting-face.svg"
-    if (tags.includes("surprised")) return "/emojis/face-with-open-mouth.svg"
-    if (tags.includes("shy")) return "/emojis/flushed-face.svg"
-    if (tags.includes("blush")) return "/emojis/smiling-face-with-hearts.svg"
-    if (tags.includes("wave")) return "/emojis/waving-hand.svg"
-    if (tags.includes("thumbs up")) return "/emojis/thumbs-up.svg"
-    if (tags.includes("sparkle")) return "/emojis/sparkles.svg"
-    if (tags.includes("star")) return "/emojis/star.svg"
-    if (tags.includes("heart")) return "/emojis/heart.svg"
-    if (tags.includes("bubble")) return "/emojis/speech-balloon.svg"
-    if (tags.includes("table flip")) return "/emojis/person-gesturing-no.svg"
-    if (tags.includes("disapproval")) return "/emojis/unamused-face.svg"
-    if (tags.includes("wink")) return "/emojis/winking-face.svg"
-    if (tags.includes("drooling")) return "/emojis/drooling-face.svg"
-    if (tags.includes("offering")) return "/emojis/open-hands.svg"
-    if (tags.includes("headphones")) return "/emojis/headphone.svg"
-    if (tags.includes("whistling")) return "/emojis/musical-note.svg"
-    if (tags.includes("poetry")) return "/emojis/scroll.svg"
-    if (tags.includes("tang")) return "/emojis/scroll.svg"
-
-    // Default to category emoji if no specific tag match
-    return categoryEmojiMap[category] || "/emojis/smiling-face.svg"
-  }
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       <AnimatePresence>
@@ -111,15 +46,6 @@ export function KaomojiGrid({ kaomoji, onCopy }: KaomojiGridProps) {
               onClick={() => copyToClipboard(item.text, index)}
             >
               <div className="p-6 flex flex-col items-center justify-center min-h-[180px] cursor-pointer">
-                <div className="absolute top-3 right-3">
-                  <Image
-                    src={getEmojiImage(item.category, item.tags) || "/placeholder.svg"}
-                    alt={item.category}
-                    width={24}
-                    height={24}
-                    className="opacity-70 group-hover:opacity-100 transition-opacity"
-                  />
-                </div>
                 <div className="text-2xl font-mono mb-4 text-center text-plum">{item.text}</div>
                 <div
                   className={`text-sm text-center mb-2 ${
